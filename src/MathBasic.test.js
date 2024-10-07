@@ -12,13 +12,18 @@ describe('A MathBasic', () => {
     expect(MathBasic.divide).toBeInstanceOf(Function);
   });
 
-
   describe('A add function', () => {
     it('should throw error when not given 2 parameters', () => {
       expect(() => MathBasic.add()).toThrowError();
       expect(() => MathBasic.add(1)).toThrowError();
       expect(() => MathBasic.add(1, 2, 3)).toThrowError();
       expect(() => MathBasic.add(1, 2, 3, 4)).toThrowError();
+    });
+
+    it('should throw error when given non-number parameters', () => {
+      expect(() => MathBasic.add('1', '2')).toThrowError();
+      expect(() => MathBasic.add(true, {})).toThrowError();
+      expect(() => MathBasic.add(null, false)).toThrowError();
     });
   });
 });
